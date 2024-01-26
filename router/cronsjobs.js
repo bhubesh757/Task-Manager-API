@@ -63,7 +63,7 @@ require('dotenv').config();
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioClient = new twilio.Twilio("AC4dd11fd13a1840ffdba8d922214692a4", "9f4edd3e31a77236cb4538c1f16b37e8");
+const twilioClient = new twilio.Twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const cronJobs = {
   start: () => {
@@ -98,7 +98,7 @@ cron.schedule('*/1 * * * *', async () => {
           await twilioClient.calls.create({
               to: '+918072782437',
               from: '+16592177075',
-              url: "http://demo.twilio.com/docs/voice.xml", // Provide a URL for handling the voice call
+              url: "http://demo.twilio.com/docs/voice.xml", 
               method: 'GET',
           });
 
